@@ -1,0 +1,199 @@
+* { box-sizing: border-box; }
+body {
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: #f6f8fa;
+  color: #222;
+  margin: 0;
+  padding: 24px;
+}
+
+.sr-only {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 6px 28px rgba(14, 20, 30, 0.06);
+}
+
+.topbar {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.topbar h1 {
+  margin: 0;
+  font-size: 20px;
+  color: #0f1724;
+  font-weight: 600;
+}
+
+.top-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.filepicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #f3f4f6;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.filepicker input[type="file"] {
+  display: none;
+}
+.filepicker-label { font-size: 13px; color: #374151; }
+
+.btn {
+  background: #e6eefc;
+  color: #0b5ed7;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 13px;
+}
+.btn:hover { filter: brightness(0.98); }
+.btn.primary {
+  background: #0b5ed7;
+  color: white;
+}
+.btn.danger {
+  background: #e74c3c;
+  color: white;
+}
+.btn.ghost {
+  background: transparent;
+  color: #0b5ed7;
+  border: 1px solid #e6eefc;
+}
+.btn.small {
+  padding: 6px 8px;
+  font-size: 13px;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.filters {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex: 1 1 520px;
+}
+
+.filters input[type="search"] {
+  flex: 1;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #e6e9ee;
+  min-width: 180px;
+}
+
+.filters select {
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #e6e9ee;
+  background: white;
+}
+
+.pagination-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.progress-area {
+  margin: 6px 0 12px 0;
+  min-height: 36px;
+}
+
+.table-wrap h2 {
+  margin: 6px 0 12px 0;
+  font-size: 16px;
+}
+
+.table-scroll {
+  overflow: auto;
+  border-radius: 8px;
+  border: 1px solid #eef2f6;
+}
+
+.products-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 800px;
+}
+.products-table thead {
+  position: sticky;
+  top: 0;
+  background: linear-gradient(180deg,#0b5ed7,#0b5ed7);
+  color: white;
+  z-index: 2;
+}
+.products-table th, .products-table td {
+  padding: 12px 10px;
+  border-bottom: 1px solid #f1f4f8;
+  text-align: left;
+  font-size: 14px;
+}
+.products-table tbody tr:nth-child(even) {
+  background: #fbfdff;
+}
+.products-table tr.inactive { opacity: .6; filter: grayscale(.2); }
+
+.action-buttons button { margin-right: 6px; }
+
+.modal-backdrop {
+  position: fixed; inset: 0; background: rgba(2,6,23,0.45); z-index: 1000;
+}
+.modal {
+  position: fixed;
+  left: 50%; top: 50%;
+  transform: translate(-50%,-50%);
+  width: 520px;
+  max-width: calc(100% - 40px);
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 20px 60px rgba(2,6,23,0.25);
+  z-index: 1010;
+}
+.modal-inner { padding: 16px; }
+.modal-header { margin-bottom: 8px; }
+.modal-body .field { margin-bottom: 10px; }
+.field label { display:block; font-size: 13px; color:#374151; margin-bottom:6px; }
+.field input[type="text"], .field input[type="search"], .field input[type="url"] {
+  width: 100%; padding: 8px; border-radius: 8px; border: 1px solid #e6e9ee;
+  font-size: 14px;
+}
+.field-inline { display:flex; align-items:center; gap:10px; }
+
+.modal-footer { display:flex; justify-content:flex-end; gap:8px; margin-top:8px; }
+
+@media (max-width: 720px) {
+  .top-actions { flex-wrap: wrap; gap: 6px; }
+  .filters { flex-direction: column; align-items: stretch; gap: 8px; }
+  .pagination-controls { justify-content: flex-start; }
+}

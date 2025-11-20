@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Product Importer</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <main class="container" role="main">
+    <header class="topbar">
+      <h1>Product Importer</h1>
+      <div class="top-actions" aria-hidden="false">
+        <label class="filepicker">
+          <input id="fileInput" type="file" accept=".csv" />
+          <span class="filepicker-label">Choose CSV...</span>
+        </label>
+        <button id="uploadBtn" class="btn primary">Upload CSV</button>
+        <button id="deleteAllBtn" class="btn danger">Delete All</button>
+        <button id="manageWebhooksBtn" class="btn">Webhooks</button>
+        <button id="createProductBtn" class="btn ghost">Create</button>
+      </div>
+    </header>
+
+    <section class="controls">
+      <div class="filters">
+        <input id="searchBox" type="search" placeholder="Search SKU, Name, Description…" aria-label="Search products" />
+        <select id="activeFilter" aria-label="Filter by active status">
+          <option value="all">All</option>
+          <option value="true">Active</option>
+          <option value="false">Inactive</option>
+        </select>
+        <label for="perPageSelect" class="sr-only">Per page</label>
+        <select id="perPageSelect" aria-label="Results per page">
+          <option>20</option>
+          <option>50</option>
+          <option>100</option>
+        </select>
+      </div>
+
+      <div class="pagination-controls">
+        <button id="prevPageBtn" class="btn small">Prev</button>
+        <div class="page-info">Page <span id="currentPage">1</span></div>
+        <button id="nextPageBtn" class="btn small">Next</button>
+      </div>
+    </section>
+
+    <section id="progress" class="progress-area" aria-live="polite"></section>
+
+    <section class="table-wrap" aria-labelledby="productsHeading">
+      <h2 id="productsHeading">Products</h2>
+      <div class="table-scroll">
+        <table id="productsTable" class="products-table" role="table" aria-describedby="productsHeading">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>SKU</th>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Active</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="productsBody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <div id="modalBackdrop" class="modal-backdrop" style="display:none"></div>
+  <div id="productModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true" style="display:none">
+    <div class="modal-inner">
+      <header class="modal-header">
+        <h3 id="modalTitle">Edit Product</h3>
+      </header>
+
+      <form id="modalForm" class="modal-body">
+        <input type="hidden" id="modalProductId" />
+        <div class="field">
+          <label for="modalSku">SKU</label>
+          <input id="modalSku" name="sku" />
+        </div>
+        <div class="field">
+          <label for="modalName">Name</label>
+          <input id="modalName" name="name" />
+        </div>
+        <div class="field">
+          <label for="modalDescription">Description</label>
+          <input id="modalDescription" name="description" />
+        </div>
+        <div class="field field-inline">
+          <label for="modalActive">Active</label>
+          <input type="checkbox" id="modalActive" name="active" />
+        </div>
+      </form>
+
+      <footer class="modal-footer">
+        <button id="modalCancelBtn" class="btn">Cancel</button>
+        <button id="modalSaveBtn" class="btn primary">Save</button>
+      </footer>
+    </div>
+  </div>
+
+  <script src="/static/upload.js"></script>
+</body>
+</html>
